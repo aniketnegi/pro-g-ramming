@@ -15,7 +15,9 @@ a program to give the highest prime factor of an inputted number.
 - The highest prime factor of a number is either the number itself (the number of prime), or somewhere below number/2 (if the number is composite).
 
   > 48 -> (1, 2, 4, 6, 8, 12, 24, 48): Factors -> (2): Prime Factor
+
   > 15 -> (1, 3, 5, 15): Factors -> (3, 5): Prime Factors
+
   > 29 -> (1, 29): Factors -> (29): Prime Factor
 
 - Sieve of Eratosthenes from (1 -> number).
