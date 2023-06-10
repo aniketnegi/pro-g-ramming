@@ -26,7 +26,7 @@ int main(int argc, char **argv) {
 
   solution(max_lim, result);
 
-  for (int i = 0; i < max_lim; i++) {
+  for (size_t i = 0; i < max_lim; i++) {
     printf("%s\n", result[i]);
   }
 

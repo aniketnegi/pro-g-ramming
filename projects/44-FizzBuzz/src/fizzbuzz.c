@@ -40,7 +40,7 @@ char **safe_result_alloc(size_t length) {
 }
 
 void destroy_result(size_t length, char **result) {
-  for (int i = 0; i < length; i++) {
+  for (size_t i = 0; i < length; i++) {
     free(result[i]);
   }
 

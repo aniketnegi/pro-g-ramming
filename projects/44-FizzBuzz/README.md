@@ -34,3 +34,8 @@ Given an integer `n`, return a string array `answer` (1-indexed) where:
 ## Comments
 
 I think i have a real problem in my method of problem solving. I've noticed this for a while now, i try to get the perfect solution the first time. and in that endeavour, I end up taking comically more time to solve the problem than it deserves. Even in this problem. I hadn't even written a basic FB program when i started to think about multithreaing, and how i can do away with so many if-else clauses. i believe a rework of my problem solving roadmap is required.
+
+## TODO
+
+- [ ] multithreaing
+- [ ] FB in asm
