@@ -10,7 +10,7 @@ tags: algorithmic,
 
 ## Problem Statement
 
-- Level 1: 
+- Level 1:
 
 > Given an encrypted string and its shift (`+` for right shift and `-` for left). decode the string.
 
@@ -22,7 +22,6 @@ tags: algorithmic,
 
 > Give the option to encrypt strings.
 
-
 ## Idea
 
 - Use ASCII for level 1. ignore non alphabet characters (optionally rotate the numbers also? ignore `_,/{}()[]` etc. though),
@@ -32,7 +31,6 @@ tags: algorithmic,
 > Use Markov Chain Sentence Generators somehow (haven't really read a lot about them, but it's the 4th challenge). to find most probabl decoded string by analysing what words make the most sense. (Do i mean Markov Chains or do i mean Spellchecker/????)
 
 - encrypting part is easy. (*Optional*)
-
 
 ## References
 
@@ -47,9 +45,7 @@ tags: algorithmic,
 - [Markov Chain Sentence Generator (with Shitposting capabilities)](https://scribe.privacydev.net/markov-chain-sentence-generator-with-sh-tposting-capabilities-a0bd5a184173)
 - [Using a Markov chain sentence generator in Python to generate ‘real fake news’.](https://scribe.privacydev.net/using-a-markov-chain-sentence-generator-in-python-to-generate-real-fake-news-e9c904e967e)
 
-
 ## Comments
-
 
 ## TODO
 
