@@ -49,3 +49,13 @@ Droco kbo cywo xewlobc: 12345678900912479237593457943758";
 
   return EXIT_SUCCESS;
 }
+
+/* QUESTION:
+ * if i implement file i/o, is it better to get characters one by one from file
+ * using fgetc and call decode for each character (i will obviously tweak the
+ * behaviour of decode()); or would it be better to take the whole file data as
+ * one, and pass it into the encoded_string buffer, and then call decode() only
+ * once? when i put it like this, it sounds like the latter is better. is that
+ * the case? also how do i effectively manage the size of buffers? i don't want
+ * to limit the size of file or encoded string the user can pass.
+ */

@@ -3,6 +3,6 @@
 
 #include <stdint.h>
 
-uint64_t highest_prime(uint64_t number);
+uint64_t solution(uint64_t number);
 
 #endif // !DEBUG

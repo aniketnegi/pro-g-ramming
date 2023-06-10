@@ -1,24 +1,41 @@
 #include "highest_prime.h"
+#include <math.h>
 #include <stdint.h>
-#include <stdlib.h>
 
-static uint64_t *sieve(uint64_t number) {
-  uint64_t *temp_arr = malloc(3 * sizeof(uint64_t));
+uint64_t solution(uint64_t number) {
+  uint64_t last_factor;
 
-  for (int i = 0; i < 3; i++) {
-    temp_arr[i] = (uint64_t)i;
+  if (number % 2 == 0) {
+    last_factor = 2;
+    number /= 2;
+    while (number % 2 == 0) {
+      number /= 2;
+    }
+  } else {
+    last_factor = 1;
   }
 
-  return temp_arr;
-}
+  uint64_t factor = 3;
 
-uint64_t highest_prime(uint64_t number) {
+  uint64_t max_factor = (uint64_t)sqrt((double)number);
 
-  // return the number if the number is itself prime, i.e its own highest prime
-  // fac.
+  while (number > 1 && factor <= max_factor) {
+    if (number % factor == 0) {
+      number /= factor;
+      last_factor = factor;
+      while (number % factor == 0) {
+        number /= factor;
+      }
+      max_factor = (uint64_t)sqrt((double)number);
+      ;
+    }
 
-  // generate an array of primes using sieve or erasthothenes.
-  uint64_t *sieve_arr = sieve(number);
+    factor += 2;
+  }
 
-  return 0;
+  if (number == 1) {
+    return last_factor;
+  } else {
+    return number;
+  }
 }

@@ -4,7 +4,8 @@ CFLAGS := -Wall -Wextra -pedantic
 all: solution
 
 solution: main.o fizzbuzz.o
-	$(CC) $(CFLAGS) $^ -o $@
+	mkdir ../bin/
+	$(CC) $(CFLAGS) $^ -o ../bin/$@
 
 main.o: main.c fizzbuzz.h
 	$(CC) $(CFLAGS) -c $< -o $@
