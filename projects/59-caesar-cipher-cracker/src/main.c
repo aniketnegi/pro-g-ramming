@@ -1,3 +1,4 @@
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,55 +8,53 @@
 // #define MAX_STR_LEN 1024
 
 int main(void) {
-  char *encoded_string =
-      "Mkvv wo Scrwkov. Cywo iokbc kqy--xofob wsxn ryg vyxq zbomscovi--rkfsxq \
-vsddvo yb xy wyxoi sx wi zebco, kxn xydrsxq zkbdsmevkb dy sxdobocd wo \
-yx crybo, S dryeqrd S gyevn cksv klyed k vsddvo kxn coo dro gkdobi zkbd \
-yp dro gybvn. Sd sc k gki S rkfo yp nbsfsxq ypp dro czvoox kxn \
-boqevkdsxq dro msbmevkdsyx. Groxofob S psxn wicovp qbygsxq qbsw klyed \
-dro wyedr; groxofob sd sc k nkwz, nbsjjvi Xyfowlob sx wi cyev; groxofob \
-S psxn wicovp sxfyvexdkbsvi zkecsxq lopybo myppsx gkboryecoc, kxn \
-lbsxqsxq ez dro bokb yp ofobi pexobkv S wood; kxn oczomskvvi groxofob \
-wi rizyc qod cemr kx ezzob rkxn yp wo, drkd sd boaesboc k cdbyxq wybkv \
-zbsxmszvo dy zbofoxd wo pbyw novslobkdovi cdozzsxq sxdy dro cdbood, kxn \
-wodrynsmkvvi uxymusxq zoyzvo’c rkdc ypp--drox, S kmmyexd sd rsqr dswo dy \
-qod dy cok kc cyyx kc S mkx. Drsc sc wi celcdsdedo pyb zscdyv kxn lkvv. \
-Gsdr k zrsvycyzrsmkv pvyebscr Mkdy drbygc rswcovp ezyx rsc cgybn; S \
-aesodvi dkuo dy dro crsz. Drobo sc xydrsxq cebzbscsxq sx drsc. Sp droi \
-led uxog sd, kvwycd kvv wox sx drosb noqboo, cywo dswo yb ydrob, \
-mrobscr fobi xokbvi dro ckwo poovsxqc dygkbnc dro ymokx gsdr wo. \
- \
-Drobo xyg sc iyeb sxcevkb msdi yp dro Wkxrkddyoc, lovdon byexn li \
-grkbfoc kc Sxnskx scvoc li mybkv boopc--mywwobmo cebbyexnc sd gsdr rob \
-cebp. Bsqrd kxn vopd, dro cdboodc dkuo iye gkdobgkbn. Sdc ohdbowo \
-nygxdygx sc dro lkddobi, grobo drkd xylvo wyvo sc gkcron li gkfoc, kxn \
-myyvon li lboojoc, grsmr k pog ryebc zbofsyec gobo yed yp csqrd yp \
-vkxn. Vyyu kd dro mbygnc yp gkdob-qkjobc drobo. \
- \
-Droco kbo cywo xewlobc: 12345678900912479237593457943758";
+  FILE *fp_enc = fopen("encrypted.txt", "r");
+  FILE *fp_dec = fopen("decrypted.txt", "w");
 
-  size_t length = strlen(
-      encoded_string); // using strlen for now because i am controlling input,
-                       // and frankly at this stage, couldnt be bothered to add
-                       // complexity with dynamic mem alloc
+  uint8_t shift = 13; // read from stdin later
 
-  char *decoded_buffer = (char *)malloc(sizeof(char) * length);
+  if (fp_enc == NULL || fp_dec == NULL) {
+    char *failure;
+    failure =
+        (fp_enc == NULL) ? "encrypted.txt" : "decrypted.txt"; // stdin later
+    fprintf(stderr, "FAILURE TO OPEN FILE %s\n", failure);
+    exit(EXIT_FAILURE);
+  }
 
-  decode(encoded_string, decoded_buffer, length, -10);
+  char c;
+  while ((c = fgetc(fp_enc)) != EOF) {
+    char c_decrypted = decrypt_char(c, shift);
+    fputc(c_decrypted, fp_dec);
+  }
 
-  printf("%s\n", decoded_buffer);
-
-  free(decoded_buffer);
+  fprintf(
+      stdout,
+      "SUCCESS!\nWritten the decrypted contents of the file %s successfully "
+      "to file: %s\n",
+      "encrypted.txt", "decrypted.txt"); // stdin later
 
   return EXIT_SUCCESS;
 }
 
 /* QUESTION:
  * if i implement file i/o, is it better to get characters one by one from file
- * using fgetc and call decode for each character (i will obviously tweak the
- * behaviour of decode()); or would it be better to take the whole file data as
- * one, and pass it into the encoded_string buffer, and then call decode() only
+ * using fgetc and call decrypt for each character (i will obviously tweak the
+ * behaviour of decrypt()); or would it be better to take the whole file data as
+ * one, and pass it into the encoded_string buffer, and then call decrypt() only
  * once? when i put it like this, it sounds like the latter is better. is that
  * the case? also how do i effectively manage the size of buffers? i don't want
  * to limit the size of file or encoded string the user can pass.
+ */
+
+/* 12-06-2023 - 22:42
+ * Upon having given it further thought, it seems like reading character by
+ * character is superior. There are 2 reasons that have led me to this
+ * conclusion -
+ *
+ * 1. According to a thread i read on superuser.com (which i can't find now),
+ * internal caching happens when im reading character by character, so I don't
+ * have to worry about disk i/o being a major factor anyway.
+ *
+ * 2. If i read the file one character at a time, i don't have to worry about
+ * the size of the input buffer, obviously.
  */
