@@ -39,3 +39,25 @@ uint64_t solution(uint64_t number) {
     return number;
   }
 }
+
+/*
+ * n = 1252
+ * (n%2 == 0) --> last_factor = 2
+ *
+ * n /= 2 -> n = 626
+ * n /= 2 -> n = 313
+ *
+ * factor = 3
+ * max_factor = (uint64_t) sqrt(n) = 17
+ *
+ * (n % factor != 0) --> factor += 2 = 5
+ * (n % factor != 0) --> factor += 2 = 7
+ * (n % factor != 0) --> factor += 2 = 9
+ * (n % factor != 0) --> factor += 2 = 11
+ * (n % factor != 0) --> factor += 2 = 13
+ * (n % factor != 0) --> factor += 2 = 15
+ * (n % factor != 0) --> factor += 2 = 17
+ *
+ * (n != 1) --> return n --> return 313
+ *
+ */
