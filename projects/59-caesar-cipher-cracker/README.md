@@ -18,7 +18,7 @@ tags: algorithmic,
 
 > Given an encrypted string. decode the string. (shift is not given.)
 
-- *Optional*
+- _Optional_
 
 > Give the option to encrypt strings.
 
@@ -30,7 +30,7 @@ tags: algorithmic,
 
 > Use Markov Chain Sentence Generators somehow (haven't really read a lot about them, but it's the 4th challenge). to find most probabl decoded string by analysing what words make the most sense. (Do i mean Markov Chains or do i mean Spellchecker/????)
 
-- encrypting part is easy. (*Optional*)
+- encrypting part is easy. (_Optional_)
 
 ## References
 
@@ -45,10 +45,16 @@ tags: algorithmic,
 - [Markov Chain Sentence Generator (with Shitposting capabilities)](https://scribe.privacydev.net/markov-chain-sentence-generator-with-sh-tposting-capabilities-a0bd5a184173)
 - [Using a Markov chain sentence generator in Python to generate ‘real fake news’.](https://scribe.privacydev.net/using-a-markov-chain-sentence-generator-in-python-to-generate-real-fake-news-e9c904e967e)
 
+**Spellchecker**
+
+- [How do Spell Checkers work? Levenshtein Edit Distance](https://www.youtube.com/watch?v=Cu7Tl7FGigQ)
+- [Real-Time Spelling Checker in Python](https://www.youtube.com/watch?v=_nkQd9SyEpw)
+- _as of right now, reddit is down (API strikes), otherwise i would have resources to refer other than YouTube_
+
 ## Comments
 
 ## TODO
 
 - [ ] Level 1
 - [ ] Level 2
-- [ ] *Optional*
+- [ ] _Optional_
