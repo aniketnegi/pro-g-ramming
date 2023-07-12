@@ -12,7 +12,7 @@ A program to count occurences of a character in string
 
 ## Idea
 
-Hashmap
+LOOP
 (Will add support for unicode later somehow)
 
 ## References
